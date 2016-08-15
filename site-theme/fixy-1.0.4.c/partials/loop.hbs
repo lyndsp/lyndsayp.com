@@ -1,0 +1,37 @@
+{{! Each post will be output using this markup }}
+{{#foreach posts}}
+
+<article class="{{post_class}}{{#if @even}} even{{else}} odd{{/if}}">
+
+  {{#if image}}
+
+
+  <div class="post-image post-image-support">
+    <a href="{{url}}" title="{{title}}">
+      <img src="{{image}}" alt="{{title}}" />
+    </a>
+  </div>
+
+
+  {{else}}
+
+
+  <div class="post-image"><a href="{{url}}" title="{{{title}}}">{{content words="0"}}</a></div>
+
+
+  {{/if}}
+
+
+  <div class="inner">
+    <time datetime="{{date format="YYYY-MM-DD"}}">{{date format='DD MMM YYYY'}}</time> {{#if tags}}<span class="post-tags">on {{tags separator=", "}}</span>{{/if}}
+    <h2 class="post-title"><a href="{{url}}" title="{{{title}}}">{{{title}}}</a></h2>
+    <p>{{excerpt}}&hellip;</p>
+    <a class="more" href="{{url}}" title="{{{title}}}">Continue reading</a>
+  </div>
+  <span class="star"></span>
+</article>
+
+{{/foreach}}
+
+{{!! After all the posts, we have the previous/next pagination links }}
+{{pagination}}

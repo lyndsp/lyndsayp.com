@@ -1,0 +1,26 @@
+{{!< default}}
+
+{{! The comment above "< default" means - insert everything in this file into
+the {body} of the default.hbs template, which contains our header/footer. }}
+
+{{! The main content area on the homepage }}
+<section class="content-home" role="main">
+
+		{{#author}}
+
+    <article class="result post">
+        <div class="inner post-inner">
+
+          <h1 class="searching">
+            <a href="{{url}}rss/">{{name}}</a>
+          </h1>
+
+        </div>
+      </article>
+
+  {{/author}}
+
+	{{! Loop partial for generic loop control }}
+	{{> "loop" }}
+
+</section>

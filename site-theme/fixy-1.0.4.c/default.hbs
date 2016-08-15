@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {{! Document Settings }}
+
+    {{! Page Meta }}
+    <meta charset="UTF-8" />
+    <title>{{meta_title}}</title>
+	<meta name="description" content="{{meta_description}}" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    {{! Styles'n'Scripts }}
+    <link rel="stylesheet" type="text/css" href="{{asset "css/screen.css"}}" />
+
+   		<!--[if lt IE 9]>
+        		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			 <link rel="stylesheet" type="text/css" href="{{asset "css/ie.css"}}" />
+        <![endif]-->
+
+    {{>analytics }}
+    {{! Ghost outputs important style and meta data with this tag }}
+    {{ghost_head}}
+</head>
+<body class="{{body_class}}">
+<div id="wrap" class="animated fadeIn">
+{{! The big featured header on the homepage, with the site logo and description }}
+	<div class="site-head"{{#if @blog.cover}}style="background-image: url({{@blog.cover}})"{{/if}}>
+		<header {{#if @blog.cover}} class="overlay" {{else}}{{/if}}>
+	        {{#if @blog.logo}}
+	        	<a class="main-logo" href="{{@blog.url}}"><img src="{{@blog.logo}}" alt="{{@blog.title}} Logo" /></a>
+	        {{else}}
+	        {{/if}}
+        	<div class="blog-title"><a href="{{@blog.url}}">{{@blog.title}}</a></div>
+	        <div class="blog-tagline">{{@blog.description}}</div>
+	        {{navigation }}
+        </header>
+	</div>
+
+	{{! Everything else gets inserted here }}
+	{{{body}}}
+
+    <footer class="main-footer {{#if @blog.cover}} footer-overlay{{else}}{{/if}}">
+        <div class="wrapper">
+  	         {{>footer }}
+        </div>
+    </footer>
+</div>
+    {{! Ghost outputs important scripts and data with this tag }}
+    {{ghost_foot}}
+
+    {{! The main JavaScript file }}
+    <script src="{{asset "js/plugins.min.js"}}"></script>
+    <script src="{{asset "js/scripts.min.js"}}"></script>
+
+
+
+</body>
+</html>
